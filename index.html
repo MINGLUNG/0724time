@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人簡易計時器的製作範例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #settings, #timerPage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #timer {
+            font-size: 3em;
+            margin: 20px 0;
+            position: relative;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+        }
+        #completeButton {
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+        #startButton {
+            background-color: #28a745;
+        }
+        #stopButton {
+            background-color: #dc3545;
+        }
+        #resetButton {
+            background-color: #ffc107;
+        }
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+        }
+        .circle {
+            width: 10px;
+            height: 10px;
+            background-color: #000;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .circle.left {
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .circle.right {
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .circle-frame {
+            width: 400px;
+            height: 400px;
+            border: 2px solid black;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .outer-frame {
+            width: 460px;
+            height: 460px;
+            border: 5px solid black;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        #footerImage {
+            max-width: 100px;
+            max-height: 100px;
+            display: none;
+        }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="settings">
+    <h1>個人簡易計時器的製作範例</h1>
+    <label for="timeInput">設定倒數時間（秒）：</label>
+    <input type="number" id="timeInput" min="1" required>
+    <label for="soundCheckbox">
+        <input type="checkbox" id="soundCheckbox"> 是否啟用倒數計時聲音
+    </label>
+    <label for="imageUpload">選擇個人插圖：</label>
+    <input type="file" id="imageUpload" accept="image/*">
+    <button id="completeButton">設定完成</button>
+</div>
+
+<div id="timerPage" style="display: none;">
+    <div class="outer-frame">
+        <div class="circle-frame">
+            <div id="timer">
+                <div class="circle left"></div>
+                <div class="circle right"></div>
+                00:00
+            </div>
+        </div>
+    </div>
+    <div id="buttonContainer">
+        <button id="startButton">開始</button>
+        <button id="stopButton">停止</button>
+        <button id="resetButton">重置</button>
+    </div>
+    <img id="footerImage" src="" alt="插圖">
+</div>
+
+<footer>
+    <p>課程組吳明隆</p>
+</footer>
+
+<audio id="tickSound" src="https://www.teachersay.com/image/works/Lljbox1YshiM0xQw736XaQ9KsMKkEp5fv4zXNxXL.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
